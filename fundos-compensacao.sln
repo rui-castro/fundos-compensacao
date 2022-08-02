@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "fundos-compensacao", "fundos-compensacao.vbproj", "{05089192-7D3A-429D-A1C8-D89A2D161939}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05089192-7D3A-429D-A1C8-D89A2D161939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05089192-7D3A-429D-A1C8-D89A2D161939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05089192-7D3A-429D-A1C8-D89A2D161939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05089192-7D3A-429D-A1C8-D89A2D161939}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
