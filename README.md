@@ -1,5 +1,5 @@
 # Fundos de compensação
 ## Emitir documento de pagamento
-```
-$> fundos-compensacao NISS password
+```shell
+fundos-compensacao NISS password
 ```
