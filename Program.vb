@@ -70,9 +70,8 @@ Module Program
 
         Dim path = ExtractValueWithRegex(body, "window.open\('([^']+)")
         result = client.GetAsync($"https://www.fundoscompensacao.pt{path}").Result
-        Dim resultStream as Stream = result.Content.ReadAsStream()
         Using fileStream as FileStream = File.Create(filePath)
-            resultStream.CopyTo(fileStream)
+            result.Content.CopyToAsync(fileStream)
         End Using
     End Sub
 
