@@ -48,7 +48,7 @@ Module Program
         GetPdf(client, "form:btnPrintReport", "documento-pagamento-imprimir.pdf")
     End Sub
     
-    Private Sub GetPDF(client as HttpClient, action as String, filePath as String)
+    Private Async Sub GetPDF(client as HttpClient, action as String, filePath as String)
         Const url = "https://www.fundoscompensacao.pt/fc/gfct/pagamentos/emitir/documento-pagamento"
         Dim result = client.GetAsync(url).Result
         Dim body = result.Content.ReadAsStringAsync().Result
@@ -71,7 +71,8 @@ Module Program
         Dim path = ExtractValueWithRegex(body, "window.open\('([^']+)")
         result = client.GetAsync($"https://www.fundoscompensacao.pt{path}").Result
         Using fileStream as FileStream = File.Create(filePath)
-            result.Content.CopyToAsync(fileStream)
+            Dim task = result.Content.CopyToAsync(fileStream)
+            Await task
         End Using
     End Sub
 
