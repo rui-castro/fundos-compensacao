@@ -11,10 +11,10 @@ Module Program
         Dim client As New HttpClient()
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance)
         Login(client, username, password)
-        'Dim report = GetReport(client)
-        'Console.WriteLine(report)
-        DocumentoPagamento(client)
-        Imprimir(client)
+        Dim report = GetReport(client)
+        Console.WriteLine(report)
+        'DocumentoPagamento(client)
+        'Imprimir(client)
     End Sub
 
     Private Sub Login(client as HttpClient, username as String, password as String)
@@ -83,11 +83,13 @@ Module Program
         
         Dim dswid = ExtractValueWithRegex(body, "documento-pagamento\?dswid=(-?\d+)""")
         Dim viewState = ExtractInputValue(body, "javax.faces.ViewState")
+        Dim token = ExtractValueWithRegex(body, "var token_value = '(.*)'")
 
         Dim params = New Dictionary(Of String, String)
         params.Add("form", "form")
         params.Add("form:btnExportReport", "")
         params.Add("javax.faces.ViewState", viewState)
+        params.Add("CTKN_DYN", token)
         
         result = client.PostAsync($"{url}?dswid={dswid}", new FormUrlEncodedContent(params)).Result
         body = result.Content.ReadAsStringAsync().Result
